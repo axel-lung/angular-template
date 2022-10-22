@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/User';
+import { Book } from '../models/Book';
 
 let httpOptions = {
   headers: new HttpHeaders({
@@ -13,11 +13,11 @@ let httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BookService {
 
   constructor(private _http: HttpClient) {}
 
-  getAll(): Observable<User[]> {
-    return this._http.get<User[]>('https://jsonplaceholder.typicode.com/posts', httpOptions);
+  getAll(): Observable<Book[]> {
+    return this._http.get<Book[]>('https://jsonplaceholder.typicode.com/posts', httpOptions);
   }
 }

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxsModule } from '@ngxs/store';
-import { UserState } from 'src/app/shared/users/state/user.state';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
-import { UserlistComponent } from './userlist/userlist.component';
+import { BookState } from 'src/app/shared/books/state/book.state';
+import { BooklistComponent } from './booklist/booklist.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent, UserlistComponent
+    HomeComponent, BooklistComponent
   ],
   imports: [
     CommonModule,
     NgxsModule.forRoot([
-      UserState
+      BookState
     ]),
     FormsModule,
     ReactiveFormsModule

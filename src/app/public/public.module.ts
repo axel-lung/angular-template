@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
