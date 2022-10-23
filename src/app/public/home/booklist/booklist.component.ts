@@ -1,9 +1,12 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/shared/books/models/Book';
-import { BookFacadeService } from 'src/app/shared/books/state/book.facade';
+import { BookFacade } from 'src/app/shared/books/state/book.facade';
+import { BookSelect } from 'src/app/shared/books/state/book.select';
+import { BookState } from 'src/app/shared/books/state/book.state';
 
 @Component({
   selector: 'app-booklist',
@@ -17,18 +20,18 @@ export class BooklistComponent implements OnInit {
   constructor(
     private store: Store,
     private fb: FormBuilder,
-    private facade: BookFacadeService
+    private facade: BookFacade
   ) { }
 
   ngOnInit(): void {
     this.createForm();
-    this.books$ = this.store.select<Book[]>((state) => state.books.books);
+    this.books$ = this.store.select<Book[]>(BookSelect.getBooks);
     this.facade.refresh();
   }
 
   createForm() {
     this.angForm = this.fb.group({
-      userid: [0, Validators.required],
+      userId: [0, Validators.required],
       id: [0, Validators.required],
       title: ['', Validators.required],
       body: ['', Validators.required],

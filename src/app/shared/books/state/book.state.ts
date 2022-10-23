@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { State, Action, StateContext } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { Book } from '../models/Book';
 import { BookService } from '../services/book.service';
@@ -36,8 +36,6 @@ export class BookState {
     const state = getState();
     return this.bookService.getAll().pipe(
       tap(value => {
-        console.log(value);
-
         setState({
           ...state,
           books: value
